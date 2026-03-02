@@ -48,9 +48,6 @@ class ProductPackagingUnitDataImportConfig extends DataImportConfig
         );
     }
 
-    /**
-     * @return string
-     */
     protected function getModuleDataImportDirectory(): string
     {
         return implode(DIRECTORY_SEPARATOR, [
@@ -60,9 +57,6 @@ class ProductPackagingUnitDataImportConfig extends DataImportConfig
         ]);
     }
 
-    /**
-     * @return string
-     */
     protected function getModuleRoot(): string
     {
         /** @phpstan-var non-empty-string */

@@ -33,9 +33,6 @@ class ProductPackagingUnitTypeDataImportPluginTest extends Unit
      */
     protected $tester;
 
-    /**
-     * @return void
-     */
     public function testImportImportsData(): void
     {
         $this->tester->truncateProductPackagingUnits();
@@ -57,9 +54,6 @@ class ProductPackagingUnitTypeDataImportPluginTest extends Unit
         $this->tester->assertProductPackagingUnitTypeTableHasRecords();
     }
 
-    /**
-     * @return void
-     */
     public function testGetImportTypeReturnsTypeOfImporter(): void
     {
         $dataImportPlugin = new ProductPackagingUnitTypeDataImportPlugin();

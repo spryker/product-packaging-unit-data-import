@@ -73,9 +73,6 @@ class ProductPackagingUnitDataImportPluginTest extends Unit
      */
     protected $productConcreteIds = [];
 
-    /**
-     * @return void
-     */
     public function testImportImportsData(): void
     {
         $this->tester->truncateProductPackagingUnits();
@@ -104,18 +101,12 @@ class ProductPackagingUnitDataImportPluginTest extends Unit
         $this->cleanupTestProducts();
     }
 
-    /**
-     * @return void
-     */
     public function testGetImportTypeReturnsTypeOfImporter(): void
     {
         $dataImportPlugin = new ProductPackagingUnitDataImportPlugin();
         $this->assertSame(ProductPackagingUnitDataImportConfig::IMPORT_TYPE_PRODUCT_PACKAGING_UNIT, $dataImportPlugin->getImportType());
     }
 
-    /**
-     * @return void
-     */
     protected function createTestProducts(): void
     {
         foreach (static::PRODUCT_SKUS as $sku) {
@@ -130,9 +121,6 @@ class ProductPackagingUnitDataImportPluginTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     protected function createTestMeasurementSalesUnits(): void
     {
         $code = 'MYCODE' . random_int(1, 100);
@@ -154,9 +142,6 @@ class ProductPackagingUnitDataImportPluginTest extends Unit
         }
     }
 
-    /**
-     * @return void
-     */
     protected function cleanupTestProducts(): void
     {
         foreach ($this->productConcreteIds as $concreteId) {

@@ -103,11 +103,6 @@ class ProductPackagingUnitWriterStep extends PublishAwareStep implements DataImp
         $this->addPublishEvents(ProductPackagingUnitEvents::PRODUCT_PACKAGING_UNIT_PUBLISH, $this->getIdProductBySku($dataSet[ProductPackagingUnitDataSetInterface::COLUMN_CONCRETE_SKU]));
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface
-     */
     protected function normalizeDataSet(DataSetInterface $dataSet): DataSetInterface
     {
         $dataSet[ProductPackagingUnitDataSetInterface::COLUMN_IS_AMOUNT_VARIABLE] = (bool)$dataSet[ProductPackagingUnitDataSetInterface::COLUMN_IS_AMOUNT_VARIABLE];
@@ -117,11 +112,6 @@ class ProductPackagingUnitWriterStep extends PublishAwareStep implements DataImp
         return $dataSet;
     }
 
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface
-     */
     protected function normalizeAmount(DataSetInterface $dataSet): DataSetInterface
     {
         $isAmountVariable = $dataSet[ProductPackagingUnitDataSetInterface::COLUMN_IS_AMOUNT_VARIABLE];
@@ -143,11 +133,6 @@ class ProductPackagingUnitWriterStep extends PublishAwareStep implements DataImp
         return $dataSet;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return int
-     */
     protected function getIdProductPackagingUnitTypeByName(string $name): int
     {
         $this->addProductPackagingUnitTypeToHeapByName($name);
@@ -181,20 +166,12 @@ class ProductPackagingUnitWriterStep extends PublishAwareStep implements DataImp
         static::$idProductPackagingUnitTypeHeap[$name] = $productPackagingUnitType->getIdProductPackagingUnitType();
     }
 
-    /**
-     * @return void
-     */
     protected function clearProductPackagingUnitTypeHeap(): void
     {
         static::$idProductPackagingUnitTypeHeapCurrentSize = 0;
         static::$idProductPackagingUnitTypeHeap = [];
     }
 
-    /**
-     * @param string $productSku
-     *
-     * @return int
-     */
     protected function getIdProductBySku(string $productSku): int
     {
         $this->addProductToProductHeapBySku($productSku);
@@ -220,11 +197,6 @@ class ProductPackagingUnitWriterStep extends PublishAwareStep implements DataImp
         throw new EntityNotFoundException(sprintf("Product measurement sales unit was not found for SKU '%s'", $productSku));
     }
 
-    /**
-     * @param string $productSku
-     *
-     * @return void
-     */
     protected function addProductMeasurementSalesUnitCheckToHeap(string $productSku): void
     {
         if (isset(static::$productMeasurementSalesUnitHeap[$productSku])) {
@@ -267,11 +239,6 @@ class ProductPackagingUnitWriterStep extends PublishAwareStep implements DataImp
         $this->addProductToProductHeap($productEntity);
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProduct $productEntity
-     *
-     * @return void
-     */
     protected function addProductToProductHeap(SpyProduct $productEntity): void
     {
         if (static::$productHeapCurrentSize >= static::HEAP_LIMIT) {
@@ -284,18 +251,12 @@ class ProductPackagingUnitWriterStep extends PublishAwareStep implements DataImp
         ];
     }
 
-    /**
-     * @return void
-     */
     protected function clearProductHeap(): void
     {
         static::$productHeapCurrentSize = 0;
         static::$productHeap = [];
     }
 
-    /**
-     * @return void
-     */
     protected function clearProductMeasurementSalesUnitHeap(): void
     {
         static::$productMeasurementSalesUnitHeapCurrentSize = 0;
@@ -332,9 +293,6 @@ class ProductPackagingUnitWriterStep extends PublishAwareStep implements DataImp
         return SpyProductPackagingUnitTypeQuery::create();
     }
 
-    /**
-     * @return \Orm\Zed\ProductMeasurementUnit\Persistence\SpyProductMeasurementSalesUnitQuery
-     */
     protected function getProductMeasurementSalesUnitQuery(): SpyProductMeasurementSalesUnitQuery
     {
         return SpyProductMeasurementSalesUnitQuery::create();

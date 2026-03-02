@@ -14,11 +14,6 @@ use Spryker\Zed\ProductPackagingUnitDataImport\Business\Model\DataSet\ProductPac
 
 class ProductPackagingUnitTypeWriterStep implements DataImportStepInterface
 {
-    /**
-     * @param \Spryker\Zed\DataImport\Business\Model\DataSet\DataSetInterface $dataSet
-     *
-     * @return void
-     */
     public function execute(DataSetInterface $dataSet): void
     {
         $productPackagingUnitTypeEntity = $this->getProductPackagingUnitTypeQuery()

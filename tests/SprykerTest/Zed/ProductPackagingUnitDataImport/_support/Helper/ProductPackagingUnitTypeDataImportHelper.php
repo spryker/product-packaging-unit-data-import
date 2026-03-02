@@ -26,34 +26,22 @@ class ProductPackagingUnitTypeDataImportHelper extends Module
      */
     protected const ERROR_MESSAGE_EXPECTED = 'Expected at least one entry in the database table `%s` but table is empty.';
 
-    /**
-     * @return void
-     */
     public function truncateProductPackagingUnitTypes(): void
     {
         $this->getProductPackagingUnitTypeQuery()
             ->deleteAll();
     }
 
-    /**
-     * @return void
-     */
     public function assertProductPackagingUnitTypeTableIsEmtpy(): void
     {
         $this->assertFalse($this->getProductPackagingUnitTypeQuery()->exists(), sprintf(static::ERROR_MESSAGE_FOUND, SpyProductPackagingUnitTypeTableMap::TABLE_NAME));
     }
 
-    /**
-     * @return void
-     */
     public function assertProductPackagingUnitTypeTableHasRecords(): void
     {
         $this->assertTrue($this->getProductPackagingUnitTypeQuery()->exists(), sprintf(static::ERROR_MESSAGE_EXPECTED, SpyProductPackagingUnitTypeTableMap::TABLE_NAME));
     }
 
-    /**
-     * @return \Orm\Zed\ProductPackagingUnit\Persistence\SpyProductPackagingUnitTypeQuery
-     */
     protected function getProductPackagingUnitTypeQuery(): SpyProductPackagingUnitTypeQuery
     {
         return SpyProductPackagingUnitTypeQuery::create();

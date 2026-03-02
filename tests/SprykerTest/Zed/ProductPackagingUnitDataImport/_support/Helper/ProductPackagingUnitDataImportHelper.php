@@ -23,39 +23,23 @@ class ProductPackagingUnitDataImportHelper extends Module
      */
     protected const ERROR_MESSAGE_EXPECTED_COUNT = 'Expected exactly %d entries in the database table `%s`, but found %d.';
 
-    /**
-     * @return void
-     */
     public function truncateProductPackagingUnits(): void
     {
         $this->getProductPackagingUnitQuery()
             ->deleteAll();
     }
 
-    /**
-     * @return void
-     */
     public function assertProductPackagingUnitTableIsEmtpy(): void
     {
         $this->assertFalse($this->getProductPackagingUnitQuery()->exists(), sprintf(static::ERROR_MESSAGE_FOUND, SpyProductPackagingUnitTableMap::TABLE_NAME));
     }
 
-    /**
-     * @param int $expectedCount
-     *
-     * @return void
-     */
     public function assertProductPackagingUnitTableHasRecords(int $expectedCount): void
     {
         $foundCount = $this->getProductPackagingUnitQuery()->count();
         $this->assertSame($expectedCount, $foundCount, sprintf(static::ERROR_MESSAGE_EXPECTED_COUNT, $expectedCount, SpyProductPackagingUnitTableMap::TABLE_NAME, $foundCount));
     }
 
-    /**
-     * @param int $productConcreteId
-     *
-     * @return void
-     */
     public function cleanupProductPackagingUnitProduct(int $productConcreteId): void
     {
         $this->debug(sprintf('Deleting product packaging unit for Product: %s', $productConcreteId));
@@ -65,9 +49,6 @@ class ProductPackagingUnitDataImportHelper extends Module
             ->delete();
     }
 
-    /**
-     * @return \Orm\Zed\ProductPackagingUnit\Persistence\SpyProductPackagingUnitQuery
-     */
     protected function getProductPackagingUnitQuery(): SpyProductPackagingUnitQuery
     {
         return SpyProductPackagingUnitQuery::create();
