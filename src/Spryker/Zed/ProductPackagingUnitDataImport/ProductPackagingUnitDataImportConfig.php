@@ -13,11 +13,15 @@ use Spryker\Zed\DataImport\DataImportConfig;
 class ProductPackagingUnitDataImportConfig extends DataImportConfig
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const IMPORT_TYPE_PRODUCT_PACKAGING_UNIT = 'product-packaging-unit';
 
     /**
+     * @api
+     *
      * @var string
      */
     public const IMPORT_TYPE_PRODUCT_PACKAGING_UNIT_TYPE = 'product-packaging-unit-type';
